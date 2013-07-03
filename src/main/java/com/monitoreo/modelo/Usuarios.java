@@ -4,12 +4,15 @@ package com.monitoreo.modelo;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,6 +21,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuarios", schema = "public")
+@NamedQueries({
+	  @NamedQuery(name = "usuarios.autenticacion", query = "select u from Usuarios u where u.login =:login and u.password =:password"),
+	  @NamedQuery(name = "usuarios.login", query = "select u from Usuarios u where u.login =:login") })
 public class Usuarios implements java.io.Serializable {
 
 	private int usuaid;

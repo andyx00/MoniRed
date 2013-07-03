@@ -1,4 +1,7 @@
 package com.modelo.servicios;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -7,6 +10,7 @@ import javax.ws.rs.Produces;
 import org.json.JSONObject;
 
 import com.monitoreo.bl.UsuarioBl;
+import com.monitoreo.modelo.Usuarios;
 @Path("/autenticacion")
 public class WSAutenticacion {
  
@@ -23,11 +27,11 @@ public class WSAutenticacion {
    String strUsuaLogin = jsonDatosPerfil.getString("login");
    String strUsuaPassword = jsonDatosPerfil.getString("password");
    String strIpAddress = jsonDatosPerfil.getString("ipaddress");
-
-   String strSessionId = new UsuarioBl().validarAutenticacionUsuario(
+   List<Usuarios> listUsuarios = new ArrayList<Usuarios>();
+   listUsuarios = new UsuarioBl().validarAutenticacionUsuario(
      strUsuaLogin, strUsuaPassword, strIpAddress);
-   json.put("respuesta", strSessionId);
-   System.out.println("[" + strSessionId + "]");
+   json.put("respuesta", listUsuarios.get(0).getLogin());
+   System.out.println("[" + listUsuarios.get(0).getLogin() + "]");
 
   } catch (Exception exception) {
    exception.printStackTrace();

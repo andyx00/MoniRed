@@ -38,7 +38,7 @@ public class UsuarioBl {
 	 * @param strUsuaPassword
 	 * @return
 	 */
-	public String validarAutenticacionUsuario(String strUsuaLogin,
+	public List<Usuarios> validarAutenticacionUsuario(String strUsuaLogin,
 			String strUsuaPassword, String strIpAddress) {
 		String strSesionId = "";
 
@@ -54,7 +54,7 @@ public class UsuarioBl {
 		} else {
 			strSesionId = Constantes.RESP_INCORRECTA;
 		}
-		return strSesionId;
+		return listUsuarios;
 	} // Fin validarAutenticacionUsuario
 
 	public boolean registrarUsuario(Usuarios usuarios) {
