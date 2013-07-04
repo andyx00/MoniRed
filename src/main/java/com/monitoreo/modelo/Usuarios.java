@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuarios", schema = "public")
 @NamedQueries({
-	  @NamedQuery(name = "usuarios.autenticacion", query = "select u from Usuarios u where u.login =:login and u.password =:password"),
+	  @NamedQuery(name = "usuarios.autenticacion", query = "select u from Usuarios u LEFT JOIN u.direccionesips ud where u.login=:login and u.password=:password  and ud.usuarios.usuaid= u.usuaid and  ud.direccion =:ip"),
 	  @NamedQuery(name = "usuarios.login", query = "select u from Usuarios u where u.login =:login") })
 public class Usuarios implements java.io.Serializable {
 

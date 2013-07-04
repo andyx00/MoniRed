@@ -24,12 +24,13 @@ public class UsuarioAccesoDatos extends GeneralJpaDAO<Usuarios, Long> {
 
  @SuppressWarnings("unchecked")
  public List<Usuarios> validarAutenticacionUsuario(String strUsuaLogin,
-   String strUsuaPassword) {
+   String strUsuaPassword, String strIpaddres) {
 
   return executeListResultNamedQuery(
     "usuarios.autenticacion",
     Map(entry("login", strUsuaLogin),
-      entry("password", strUsuaPassword)));
+      entry("password", strUsuaPassword),
+      entry("ip", strIpaddres) ));
  }
 
  @SuppressWarnings("unchecked")

@@ -45,7 +45,7 @@ public class UsuarioBl {
 		usuariosAccesoDatos = new UsuarioAccesoDatos(mindsITRegistrar.getEntityManager());
 
 		listUsuarios = usuariosAccesoDatos.validarAutenticacionUsuario(
-				strUsuaLogin, strUsuaPassword);
+				strUsuaLogin, strUsuaPassword,strIpAddress);
 
 		if (!listUsuarios.isEmpty()) {
 

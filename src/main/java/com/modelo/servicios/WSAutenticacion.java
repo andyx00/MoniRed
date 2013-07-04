@@ -30,8 +30,13 @@ public class WSAutenticacion {
    List<Usuarios> listUsuarios = new ArrayList<Usuarios>();
    listUsuarios = new UsuarioBl().validarAutenticacionUsuario(
      strUsuaLogin, strUsuaPassword, strIpAddress);
-   json.put("respuesta", listUsuarios.get(0).getLogin());
-   System.out.println("[" + listUsuarios.get(0).getLogin() + "]");
+   if(listUsuarios.size()>0){
+	   json.put("respuesta", listUsuarios.get(0).getLogin());
+	   System.out.println("[" + listUsuarios.get(0).getLogin() + "]");
+   }else{
+	   json.put("respuesta", "-10");
+   }
+  
 
   } catch (Exception exception) {
    exception.printStackTrace();
