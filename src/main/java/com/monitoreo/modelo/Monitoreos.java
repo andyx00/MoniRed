@@ -1,6 +1,6 @@
 package com.monitoreo.modelo;
 
-// Generated 20/06/2013 10:19:10 PM by Hibernate Tools 3.4.0.CR1
+// Generated 8/07/2013 08:40:16 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;

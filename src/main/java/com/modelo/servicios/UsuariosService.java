@@ -10,14 +10,20 @@ import javax.persistence.Query;
 
 import com.monitoreo.data.persistencias.UsuarioAccesoDatos;
 import com.monitoreo.modelo.Usuarios;
+import com.monitoreo.registros.MindsITRegistrar;
 @Named
 @Dependent
 public class UsuariosService implements Serializable {
  private static final long serialVersionUID = 1L;
 
  @Inject
+ MindsITRegistrar  mindsITRegistrar= new MindsITRegistrar();
+ 
+ @Inject
  UsuarioAccesoDatos usuarioAccesoDatos;
 
+ 
+ 
  public void save(Usuarios usuarios) {
 
   try {
@@ -27,6 +33,7 @@ public class UsuariosService implements Serializable {
 
   } catch (Exception e) {
    e.printStackTrace();
+   System.out.println("error "+e);
   }
  }
 

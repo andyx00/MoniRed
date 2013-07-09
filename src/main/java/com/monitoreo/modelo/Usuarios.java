@@ -1,6 +1,6 @@
 package com.monitoreo.modelo;
 
-// Generated 20/06/2013 10:19:10 PM by Hibernate Tools 3.4.0.CR1
+// Generated 8/07/2013 08:40:16 PM by Hibernate Tools 3.4.0.CR1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -24,6 +25,7 @@ import javax.persistence.Table;
 @NamedQueries({
 	  @NamedQuery(name = "usuarios.autenticacion", query = "select u from Usuarios u LEFT JOIN u.direccionesips ud where u.login=:login and u.password=:password  and ud.usuarios.usuaid= u.usuaid and  ud.direccion =:ip"),
 	  @NamedQuery(name = "usuarios.login", query = "select u from Usuarios u where u.login =:login") })
+@SequenceGenerator(name = "SecuenciaUsuario", sequenceName = "MonitoreoRed.usuarios_usuaid_seq", allocationSize = 1)
 public class Usuarios implements java.io.Serializable {
 
 	private int usuaid;
@@ -34,6 +36,8 @@ public class Usuarios implements java.io.Serializable {
 	private String usuamail;
 	private String login;
 	private String password;
+	private String departamento;
+	private String area;
 	private Set<Direccionesip> direccionesips = new HashSet<Direccionesip>(0);
 	private Set<Monitoreos> monitoreoses = new HashSet<Monitoreos>(0);
 	private Set<Auditoria> auditorias = new HashSet<Auditoria>(0);
@@ -54,8 +58,9 @@ public class Usuarios implements java.io.Serializable {
 
 	public Usuarios(int usuaid, Roles roles, Estados estados,
 			String usuanombre, String usuapellido, String usuamail,
-			String login, String password, Set<Direccionesip> direccionesips,
-			Set<Monitoreos> monitoreoses, Set<Auditoria> auditorias) {
+			String login, String password, String departamento, String area,
+			Set<Direccionesip> direccionesips, Set<Monitoreos> monitoreoses,
+			Set<Auditoria> auditorias) {
 		this.usuaid = usuaid;
 		this.roles = roles;
 		this.estados = estados;
@@ -64,6 +69,8 @@ public class Usuarios implements java.io.Serializable {
 		this.usuamail = usuamail;
 		this.login = login;
 		this.password = password;
+		this.departamento = departamento;
+		this.area = area;
 		this.direccionesips = direccionesips;
 		this.monitoreoses = monitoreoses;
 		this.auditorias = auditorias;
@@ -142,6 +149,24 @@ public class Usuarios implements java.io.Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Column(name = "departamento")
+	public String getDepartamento() {
+		return this.departamento;
+	}
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
+	}
+
+	@Column(name = "area")
+	public String getArea() {
+		return this.area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuarios")

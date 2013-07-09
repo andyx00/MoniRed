@@ -3,10 +3,14 @@ package com.monitoreo.utilidades;
 public class Constantes {
 
 	 public static String NOMBRE_PERSISTENCIA = "solucion";
-	 
+	 public static String TAG_RESPUESTA = "respuesta";
 	 public static Integer VAR_MAXTIEMPO_SESSION = 30;
 	 public static Integer VAR_MAXLONGITUDCADENA_SESSION = 25;
-	 
+	
+	 public static String TAG_CODIGO = "codigo";
+	 public static String TAG_MENSAJE = "mensaje";
+	 public static String TAG_ARRAY = "array";
+	 public static String TAG_JSON = "json";
 	 public static String RESP_INCORRECTA = "-1";
 	 public static Integer RESP_ERROR = -1; 
 	 public static String RESP_CORRECTA = "-10";
